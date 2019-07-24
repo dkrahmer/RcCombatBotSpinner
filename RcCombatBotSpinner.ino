@@ -55,13 +55,13 @@ void loop() {
 	#endif
 	*/
 
-	int throttlePosition = GetNormalizedStickPosition(getChannel(CHANNEL_THROTTLE), -127, 127, 4);
-	int steeringPosition = GetNormalizedStickPosition(getChannel(CHANNEL_STEERING), -127, 127, 4);
-	int whackerPosition = GetNormalizedStickPosition(getChannel(CHANNEL_WHACKER), 0, MAX_SERVO_VALUE, 4);
+	int throttlePosition = GetNormalizedStickPosition(getChannel(CHANNEL_THROTTLE), -127, 127, 6);
+	int steeringPosition = GetNormalizedStickPosition(getChannel(CHANNEL_STEERING), -127, 127, 6);
+	int whackerPosition = GetNormalizedStickPosition(getChannel(CHANNEL_WHACKER), 0, MAX_SERVO_VALUE, 6);
 	int spinnerPosition = GetNormalizedStickPosition(getChannel(CHANNEL_SPINNER), 0, MAX_SERVO_VALUE, 0);
 	double speedRatio = (double)GetNormalizedStickPosition(getChannel(CHANNEL_SPEED_PERCENT), 0, 100, 0) / 100.0;
 	bool isWedgeMode = GetNormalizedStickPosition(getChannel(CHANNEL_WEDGE_MODE), 0, 100, 0) > 60 ? true : false;
-	bool isInverted = GetNormalizedStickPosition(getChannel(CHANNEL_WEDGE_MODE), 0, 100, 0) > 60 ? true : false;
+	bool isInverted = GetNormalizedStickPosition(getChannel(CHANNEL_INVERT), 0, 100, 0) > 60 ? true : false;
 
 	// wait for first good signal from the receiver
 	if (!_isInitialized)
