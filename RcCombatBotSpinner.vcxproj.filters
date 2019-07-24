@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="RcSatelliteReceiver\RcSatelliteReceiver.cpp">
+      <Filter>RcSatelliteReceiver</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="configuration.h" />
+    <ClInclude Include="RcSatelliteReceiver\RcSatelliteReceiver.h">
+      <Filter>RcSatelliteReceiver</Filter>
+    </ClInclude>
+    <ClInclude Include="__vm\.RcCombatBotSpinner.vsarduino.h">
+      <Filter>__vm</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RcCombatBotSpinner.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="RcSatelliteReceiver">
+      <UniqueIdentifier>{8f53677f-e786-4570-9337-18ffa680818e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__vm">
+      <UniqueIdentifier>{89b9699d-2341-4a6b-9d01-71d4e0da9b89}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
