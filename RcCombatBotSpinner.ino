@@ -6,15 +6,15 @@
 #include <SoftPWM.h>
 #include <Servo.h>
 
-#ifdef IS_PPM
-#define MIN_CHANNEL_VAL 840
-#define MAX_CHANNEL_VAL 1650
-#else
-#define MIN_CHANNEL_VAL 342
-#define MAX_CHANNEL_VAL 1706
-#endif // IS_PPM
-
 RcSatelliteReceiver Receiver;
+
+#ifdef IS_PPM
+int MIN_CHANNEL_VAL 840
+int MAX_CHANNEL_VAL 1650
+#else
+int MIN_CHANNEL_VAL = Receiver.MinChannelValue;
+int MAX_CHANNEL_VAL = Receiver.MaxChannelValue;
+#endif // IS_PPM
 
 int _channels[NUM_CHANNELS];
 int _ppmSkipCount = 5;
@@ -29,6 +29,13 @@ unsigned long _spinnerLastMicros = micros();
 void setup()
 {
 	Serial.begin(115200);
+
+	// Set failsafe values for channels that cause movement
+	int servoMidPoint = (Receiver.MinChannelValue + Receiver.MaxChannelValue) / 2;
+	Receiver.setChannelFailsafeValue(CHANNEL_SPINNER, Receiver.MinChannelValue);
+	Receiver.setChannelFailsafeValue(CHANNEL_WHACKER, servoMidPoint);
+	Receiver.setChannelFailsafeValue(CHANNEL_THROTTLE, servoMidPoint);
+	Receiver.setChannelFailsafeValue(CHANNEL_STEERING, servoMidPoint);
 
 	InitGPIO();
 
